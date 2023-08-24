@@ -3,11 +3,11 @@ package group.msg.at.cloud.cloudtrain.adapter.rest.grantedpermissions;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.stereotype.Component;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -16,6 +16,8 @@ import java.util.List;
 // @Component
 public class WebClientGrantedPermissionsClient implements GrantedPermissionsClient {
 
+    private static final ParameterizedTypeReference<List<GrantedPermission>> typeRef = new ParameterizedTypeReference<List<GrantedPermission>>() {
+    };
     /**
      * Inject a {@code WebClient.Builder} instead of a {@code WebClient}
      * to be able to create a WebClient with some common configuration and
@@ -23,22 +25,19 @@ public class WebClientGrantedPermissionsClient implements GrantedPermissionsClie
      */
     @Autowired
     WebClient.Builder webClientBuilder;
-
     /**
      * Inject configuration property with downstream service base URL.
      */
     @Value("${cloudtrain.services.downstream.url}")
     String downstreamServiceUrl;
-
     /**
      * WebClient to be used to call downstream service.
      */
     WebClient webClient;
 
-    private static final ParameterizedTypeReference<List<GrantedPermission>> typeRef = new ParameterizedTypeReference<List<GrantedPermission>>() {};
-
     /**
      * Special constructor accepting all dependencies.
+     *
      * @param webClientBuilder
      * @param downstreamServiceUrl
      */
@@ -57,12 +56,13 @@ public class WebClientGrantedPermissionsClient implements GrantedPermissionsClie
 
     @Override
     public List<GrantedPermission> getGrantedPermissionsByCurrentUser() {
-        return webClient
-                .get()
-                .uri("/api/v1/grantedPermissions")
-                .retrieve()
-                .toEntity(typeRef)
-                .block()
-                .getBody();
+        ResponseEntity<List<GrantedPermission>> response =
+                webClient
+                        .get()
+                        .uri("/api/v1/grantedPermissions")
+                        .retrieve()
+                        .toEntity(typeRef)
+                        .block();
+        return response != null ? response.getBody() : Collections.emptyList();
     }
 }

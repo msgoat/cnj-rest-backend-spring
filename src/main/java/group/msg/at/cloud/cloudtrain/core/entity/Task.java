@@ -2,6 +2,7 @@ package group.msg.at.cloud.cloudtrain.core.entity;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -148,7 +149,7 @@ public class Task {
     private LocalDateTime lastModifiedAt;
 
     public Task() {
-
+        super();
     }
 
     public UUID getId() {

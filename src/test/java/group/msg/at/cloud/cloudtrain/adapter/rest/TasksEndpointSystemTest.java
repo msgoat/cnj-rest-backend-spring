@@ -60,12 +60,12 @@ public class TasksEndpointSystemTest {
     }
 
     @Test
-    public void postWithValidTaskReturns201AndLocation() {
+    void postWithValidTaskReturns201AndLocation() {
         addTask(createTask());
     }
 
     @Test
-    public void getWithValidTaskIdReturnsValidTask() {
+    void getWithValidTaskIdReturnsValidTask() {
         JsonObject expected = createTask();
         String location = addTask(expected);
         ExtractableResponse response = given().log().body(true).auth().oauth2(fixture.getAccessToken())
@@ -82,7 +82,7 @@ public class TasksEndpointSystemTest {
     }
 
     @Test
-    public void getWithoutTaskIdReturnsAllTasks() {
+    void getWithoutTaskIdReturnsAllTasks() {
         addTask(createTask());
         ExtractableResponse response = given().auth().oauth2(fixture.getAccessToken())
                 .accept(ContentType.JSON)

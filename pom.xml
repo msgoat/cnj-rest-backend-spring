@@ -179,7 +179,6 @@
                         <showWarnings>true</showWarnings>
                         <compilerArgs>
                             <arg>-Xlint</arg>
-                            <!-- <arg>-Xdoclint</arg> -->
                         </compilerArgs>
                     </configuration>
                 </plugin>
@@ -890,20 +889,6 @@
                                     <timeout>90s</timeout>
                                 </configuration>
                             </execution>
-                            <!--
-                                                        <execution>
-                                                            <id>helm-delete</id>
-                                                            <phase>post-integration-test</phase>
-                                                            <goals>
-                                                                <goal>uninstall</goal>
-                                                            </goals>
-                                                            <configuration>
-                                                                <releaseName>${project.artifactId}</releaseName>
-                                                                <namespace>${k8s.cluster.namespace}</namespace>
-                                                                <debug>true</debug>
-                                                            </configuration>
-                                                        </execution>
-                            -->
                         </executions>
                     </plugin>
                     <!-- run system tests on installed helm release -->

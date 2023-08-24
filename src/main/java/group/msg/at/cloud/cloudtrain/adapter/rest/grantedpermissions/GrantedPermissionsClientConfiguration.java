@@ -28,7 +28,7 @@ public class GrantedPermissionsClientConfiguration {
             @Value("${cloudtrain.services.downstream.url}") String downstreamUrl
     ) {
         GrantedPermissionsClient result = null;
-        switch(restClientStrategy) {
+        switch (restClientStrategy) {
             case "WEB_CLIENT":
                 result = new WebClientGrantedPermissionsClient(webClientBuilder, downstreamUrl);
                 break;

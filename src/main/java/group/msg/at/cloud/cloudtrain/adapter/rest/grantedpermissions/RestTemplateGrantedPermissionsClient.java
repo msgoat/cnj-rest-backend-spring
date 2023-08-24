@@ -1,12 +1,11 @@
 package group.msg.at.cloud.cloudtrain.adapter.rest.grantedpermissions;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import jakarta.annotation.PostConstruct;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,6 +36,7 @@ public class RestTemplateGrantedPermissionsClient implements GrantedPermissionsC
 
     /**
      * Special constructor accepting all dependencies.
+     *
      * @param restTemplateBuilder
      * @param downstreamServiceUrl
      */

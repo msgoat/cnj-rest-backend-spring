@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - added global docker-compose.yml file to simplify local execution
 - improved documentation in README.md
 - added showcases of all REST client options provided by Spring Boot
+- fixed some serious SonarQube issues
 
 ## [5.0.0] - 2023-06-02
 ### Changed

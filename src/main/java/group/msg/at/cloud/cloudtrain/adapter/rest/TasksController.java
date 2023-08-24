@@ -14,7 +14,6 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("api/v1/tasks")
-@CrossOrigin
 public class TasksController {
 
     @Autowired
@@ -22,7 +21,7 @@ public class TasksController {
 
     @GetMapping("{taskId}")
     public ResponseEntity<Task> getTaskById(@PathVariable(name = "taskId") UUID taskId) {
-        ResponseEntity result = null;
+        ResponseEntity<Task> result = null;
         Optional<Task> found = this.boundary.getTaskById(taskId);
         if (found.isPresent()) {
             result = ResponseEntity.ok(found.get());

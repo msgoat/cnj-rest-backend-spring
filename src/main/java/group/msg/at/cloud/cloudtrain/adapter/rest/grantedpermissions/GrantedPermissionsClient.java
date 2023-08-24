@@ -16,6 +16,7 @@ import java.util.List;
  * Please note that the Http Interface annotations are only active when a proxy has been created fot this interface
  * using a {@code HttpServiceProxyFactory}.
  * </p>
+ *
  * @see GrantedPermissionsClientConfiguration
  */
 @HttpExchange(accept = MediaType.APPLICATION_JSON_VALUE, contentType = MediaType.APPLICATION_JSON_VALUE)
