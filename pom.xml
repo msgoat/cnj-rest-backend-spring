@@ -9,7 +9,7 @@
     <description>Cloud native Java backend based on Spring Boot using Spring Web to expose and consume REST endpoints</description>
     <properties>
         <!-- new Maven version management -->
-        <revision>5.0.0</revision>
+        <revision>5.1.0</revision>
         <sha1>.12345678</sha1>
         <changelist>.LOCAL</changelist>
         <!-- general properties -->
@@ -23,9 +23,9 @@
         <slf4j.version>2.0.6</slf4j.version>
         <logstash.logback.encoder.version>6.1</logstash.logback.encoder.version>
         <!-- common security dependencies -->
-        <cnj.common.security.version>2.0.0</cnj.common.security.version>
+        <cnj.common.security.version>2.2.0</cnj.common.security.version>
         <!-- common rest dependencies -->
-        <cnj.common.observability.version>1.0.0</cnj.common.observability.version>
+        <cnj.common.observability.version>1.1.0</cnj.common.observability.version>
         <!-- common test dependencies -->
         <junit.version>5.9.2</junit.version>
         <restassured.version>5.2.1</restassured.version>
@@ -128,6 +128,10 @@
             <version>${cnj.common.security.version}</version>
         </dependency>
         <!-- showcase specific section -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
         <dependency>
             <groupId>group.msg.at.cloud.common</groupId>
             <artifactId>cnj-common-observability-spring</artifactId>
@@ -946,4 +950,30 @@
             <url>https://nexus.cloudtrain.aws.msgoat.eu/repository/cloudtrain-releases/</url>
         </repository>
     </distributionManagement>
+    <pluginRepositories>
+        <pluginRepository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>fail</checksumPolicy>
+            </releases>
+            <id>cloudtrain-maven-repository</id>
+            <name>msg Automotive CloudTrain Releases Repository</name>
+            <url>https://nexus.cloudtrain.aws.msgoat.eu/repository/cloudtrain-releases/</url>
+            <layout>default</layout>
+        </pluginRepository>
+    </pluginRepositories>
+    <repositories>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>fail</checksumPolicy>
+            </releases>
+            <id>cloudtrain-maven-repository</id>
+            <name>msg Automotive CloudTrain Releases Repository</name>
+            <url>https://nexus.cloudtrain.aws.msgoat.eu/repository/cloudtrain-releases/</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
 </project>

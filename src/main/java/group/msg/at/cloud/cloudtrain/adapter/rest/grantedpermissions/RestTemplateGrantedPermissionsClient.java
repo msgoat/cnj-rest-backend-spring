@@ -10,7 +10,10 @@ import jakarta.annotation.PostConstruct;
 import java.util.Arrays;
 import java.util.List;
 
-@Component
+/**
+ * Concrete {@code GrantedPermissionsClient} implementation based on {@code RestTemplate}.
+ */
+//@Component
 public class RestTemplateGrantedPermissionsClient implements GrantedPermissionsClient {
 
     /**
@@ -31,6 +34,16 @@ public class RestTemplateGrantedPermissionsClient implements GrantedPermissionsC
      * RestTemplate to be used to call downstream service.
      */
     RestTemplate restTemplate;
+
+    /**
+     * Special constructor accepting all dependencies.
+     * @param restTemplateBuilder
+     * @param downstreamServiceUrl
+     */
+    public RestTemplateGrantedPermissionsClient(RestTemplateBuilder restTemplateBuilder, String downstreamServiceUrl) {
+        this.restTemplateBuilder = restTemplateBuilder;
+        this.downstreamServiceUrl = downstreamServiceUrl;
+    }
 
     /**
      * Build a {@code RestTemplate} using the provided {@code RestTemplateBuilder}.

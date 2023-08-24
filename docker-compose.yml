@@ -1,0 +1,33 @@
+# docker-compose.yml
+# ----------------------------------------------------------------------------
+# Composes Docker containers and volumes to a runnable application
+# ----------------------------------------------------------------------------
+#
+---
+services:
+
+  downstream:
+    image: docker.cloudtrain.aws.msgoat.eu/cloudtrain/cnj-rest-downstream-spring:latest
+    environment:
+      DOCKER_JAVA_OPTS: "-Xms1g -Xmx1g"
+      SPRING_PROFILES_ACTIVE: default
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI: https://oidc.cloudtrain.aws.msgoat.eu/realms/cloudtrain/protocol/openid-connect/certs
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI: https://oidc.cloudtrain.aws.msgoat.eu/realms/cloudtrain
+
+  backend:
+    image: docker.cloudtrain.aws.msgoat.eu/cloudtrain/cnj-rest-backend-spring:latest
+    ports:
+      - "38080:8080"
+    environment:
+      DOCKER_JAVA_OPTS: "-Xms1g -Xmx1g"
+      SPRING_PROFILES_ACTIVE: default
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI: https://oidc.cloudtrain.aws.msgoat.eu/realms/cloudtrain/protocol/openid-connect/certs
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI: https://oidc.cloudtrain.aws.msgoat.eu/realms/cloudtrain
+      CLOUDTRAIN_SERVICES_DOWNSTREAM_URL: http://downstream:8080
+    depends_on:
+      - downstream
+
+
+
+
+  
