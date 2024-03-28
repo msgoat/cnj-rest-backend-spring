@@ -499,6 +499,7 @@
                     </includes>
                     <systemPropertyVariables>
                         <test.target.route>${docker.test.target.route}</test.target.route>
+                        <test.target.readinessProbe.initialDelaySeconds>15</test.target.readinessProbe.initialDelaySeconds>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
