@@ -29,7 +29,7 @@
         <cnj.common.persistence.jpa.version>1.2.0</cnj.common.persistence.jpa.version>
         <cnj.common.observability.version>1.2.0</cnj.common.observability.version>
         <cnj.common.test.core.version>1.3.0</cnj.common.test.core.version>
-        <cnj.common.security.version>2.2.0</cnj.common.security.version>
+        <cnj.common.security.version>3.0.0</cnj.common.security.version>
         <!-- docker related properties -->
         <docker.registry.name>docker.cloudtrain.aws.msgoat.eu</docker.registry.name>
         <docker.organization.name>cloudtrain</docker.organization.name>
